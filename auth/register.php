@@ -1,4 +1,34 @@
 <?php require "../includes/header.php"; ?>
+<?php require "../config/config.php"; ?>
+
+<?php
+
+if (isset($_POST['submit'])) {
+
+
+    if ($_POST['email'] == '' or $_POST['username'] == '' or $_POST['password'] == '') {
+        echo "<script>alert('Please fill all the fields')</script>";
+    } else {
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $conn->prepare("INSERT INTO users (email, username, password,) VALUES
+             (':email', ':username', ':password')");
+
+        $insert->execute([
+            ':email' => $email,
+            ':username' => $username,
+            ':password' => password_hash($password, PASSWORD_BCRYPT)
+        ]);
+    }
+    echo "<script>window.location.href = 'index.php';</script>";
+}
+
+
+
+?>
+
 
 <form method="POST" action="register.php">
     <!-- Email input -->
