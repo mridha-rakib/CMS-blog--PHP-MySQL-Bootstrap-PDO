@@ -11,18 +11,20 @@ if (isset($_POST['submit'])) {
     } else {
         $email = $_POST['email'];
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-        $conn->prepare("INSERT INTO users (email, username, password,) VALUES
-             (':email', ':username', ':password')");
+        $insert = $conn->prepare("INSERT INTO users (email, username, mypassword) VALUES
+             (:email, :username, :mypassword)");
 
         $insert->execute([
             ':email' => $email,
             ':username' => $username,
-            ':password' => password_hash($password, PASSWORD_BCRYPT)
+            ':mypassword' => $password
         ]);
     }
-    echo "<script>window.location.href = 'index.php';</script>";
+    echo "<script>window.location.href = 'login.php';</script>";
+    //header("location: login.php");
+
 }
 
 
