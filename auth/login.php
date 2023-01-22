@@ -28,6 +28,8 @@ if (isset($_POST['submit'])) {
 
       //to do our password verify + redirect to index page
       if (password_verify($password, $row['mypassword'])) {
+
+        $_SESSION['username'] = $row['username'];
         echo '<div class="alert alert-success" role="alert">Your account has been verified successfully.</div>';
         header('location:../index.php');
       } else {
