@@ -38,7 +38,7 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="../js/script.js"></script>
+<script src="http://localhost/Clean-Blog/js/script.js"></script>
 </body>
 
 </html>

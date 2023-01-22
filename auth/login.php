@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 
         $_SESSION['username'] = $row['username'];
         echo '<div class="alert alert-success" role="alert">Your account has been verified successfully.</div>';
-        header('location:../index.php');
+        header('location:http://localhost/Clean-Blog/index.php');
       } else {
         echo "<script>alert('Please fill all the fields')</script>";
       }
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
     <!-- Register buttons -->
     <div class="text-center">
         <p>
-            a new member? Create an acount<a href="register.php"> Register</a>
+            a new member? Create an account<a href="register.php"> Register</a>
         </p>
     </div>
 </form>
