@@ -54,17 +54,20 @@ session_start();
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                            <li><a class="dropdown-item" href="../auth/logout.php">Logout</a></li>
                         </ul>
                     </li>
 
                     <?php else : ?>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="login.html">login</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="register.html">register</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../auth/login.php">login</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="../Clean-Blog/auth/register.php">register</a></li>
 
                     <?php endif; ?>
 
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../contact.html">Contact</a>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="../Clean-Blog/contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
