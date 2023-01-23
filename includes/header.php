@@ -45,7 +45,7 @@ session_start();
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                             href="../Clean-Blog/index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                            href="../Clean-Blog/posts/create.html">create</a>
+                            href="../Clean-Blog/posts/create.php">create</a>
                     </li>
                     <li class="nav-item dropdown mt-3">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
