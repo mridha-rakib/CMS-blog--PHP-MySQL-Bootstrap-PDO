@@ -3,6 +3,11 @@
 
 <?php
 
+if (isset($_SESSION['username'])) {
+    header("location: http://localhost/Clean-Blog/index.php");
+}
+
+
 if (isset($_POST['submit'])) {
 
 

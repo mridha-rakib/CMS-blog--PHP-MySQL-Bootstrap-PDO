@@ -4,6 +4,11 @@
 <?php
 
 
+if (isset($_SESSION['username'])) {
+  header("location: http://localhost/Clean-Blog/index.php");
+}
+
+
 //check fo the submit
 if (isset($_POST['submit'])) {
   if ($_POST['email'] == '' or $_POST['password'] == '') {
