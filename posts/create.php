@@ -5,10 +5,13 @@
 <?php
 
 if (isset($_POST['submit'])) {
-    if ($_POST['title'] == '' or $_Post['subtitle'] == '' or $_post['body'] == '') {
-        echo "<center><h1 style='color:red;'>Please fill in all the fields correctly</h1></center>";
+    if ($_POST['title'] == '' or $_POST['subtitle'] == '' or $_POST['body'] == '') {
+        echo "<center><h3 style='color:red;'>Please fill in all the fields correctly</h3></center>";
         // return;
     } else {
+
+
+
         $title = $_POST['title'];
         $subtitle = $_POST['subtitle'];
         $body = $_POST['body'];
@@ -17,7 +20,8 @@ if (isset($_POST['submit'])) {
 
         $dir = 'images' . basename($img);
 
-        $insert = $conn->prepare("INSERT INTO posts(title, subtitle, body, img, user_id) VALUES(:title, :subtitle, :body, :img, :user_id)");
+        $insert = $conn->prepare("INSERT INTO posts (title, subtitle, body, img, user_id) 
+        VALUES(:title, :subtitle, :body, :img, :user_id)");
 
         // $insert->bindParam(':title', $title);
         // $insert->bindParam(':subtitle', $subtitle);
@@ -33,7 +37,7 @@ if (isset($_POST['submit'])) {
         ]);
 
         if (move_uploaded_file($_FILES['img']['tmp_name'], $dir)) {
-            echo "<center><h1 style='color:green;'>Image uploaded successfully</h1></center>";
+            //echo "<center><h1 style='color:green;'>Image uploaded successfully</h1></center>";
             header('location: http://localhost/Clean-Blog/index.php');
         }
     }

@@ -36,11 +36,11 @@ if (isset($_POST['submit'])) {
 
         $_SESSION['username'] = $row['username'];
         $_SESSION['user_id'] = $row['id'];
-        echo '<div class="alert alert-success" role="alert">Your account has been verified successfully.</div>';
+        //echo '<div class="alert alert-success" role="alert">Your account has been verified successfully.</div>';
         header('location:http://localhost/Clean-Blog/index.php');
-      } else {
-        echo "<script>alert('Please fill all the fields')</script>";
-      }
+      } //else {
+      //   echo "<script>alert('Please fill all the fields')</script>";
+      // }
     }
   }
 }
