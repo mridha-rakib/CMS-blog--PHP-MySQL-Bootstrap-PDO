@@ -5,9 +5,9 @@
 <?php
 
 if (isset($_POST['submit'])) {
-    if ($_POST['title'] == '' or $_Post['subtitle'] == '' or $_post['body'] == '' or $_post['img'] == '') {
+    if ($_POST['title'] == '' or $_Post['subtitle'] == '' or $_post['body'] == '') {
         echo "<center><h1 style='color:red;'>Please fill in all the fields correctly</h1></center>";
-        return;
+        // return;
     } else {
         $title = $_POST['title'];
         $subtitle = $_POST['subtitle'];
@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
 
         if (move_uploaded_file($_FILES['img']['tmp_name'], $dir)) {
             echo "<center><h1 style='color:green;'>Image uploaded successfully</h1></center>";
-            header('location: http://localhost/Clean-Blog/posts/index.php');
+            header('location: http://localhost/Clean-Blog/index.php');
         }
     }
 }
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-<form method="POST" action="create.php">
+<form method="POST" action="create.php" enctype="multipart/form-data">
     <!-- Email input -->
     <div class="form-outline mb-4">
         <input type="text" name="title" id="form2Example1" class="form-control" placeholder="title" />

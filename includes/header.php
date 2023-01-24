@@ -43,9 +43,9 @@ session_start();
                     <?php if (isset($_SESSION['username'])) : ?>
 
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                            href="../Clean-Blog/index.html">Home</a></li>
+                            href="http://localhost/Clean-Blog/index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                            href="../Clean-Blog/posts/create.php">create</a>
+                            href="http://localhost/Clean-Blog/posts/create.php">create</a>
                     </li>
                     <li class="nav-item dropdown mt-3">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -54,7 +54,8 @@ session_start();
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="../Clean-Blog/auth/logout.php">Logout</a></li>
+                            <li><a class="dropdown-item" href="http://localhost/Clean-Blog/auth/logout.php">Logout</a>
+                            </li>
                         </ul>
                     </li>
 
