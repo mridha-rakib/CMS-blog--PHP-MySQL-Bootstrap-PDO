@@ -1,68 +1,40 @@
 <?php require "includes/header.php"; ?>
 <?php require 'config/config.php'; ?>
 
+
+<?php
+
+$posts = $conn->query("SELECT * FROM posts");
+$posts->execute();
+$rows = $posts->fetchAll(PDO::FETCH_OBJ);
+
+
+?>
+
 <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
-        <?php //echo $_SESSION['username']; 
-        ?>
+
+        <?php  foreach ($rows as $row): ?>
+
         <!-- Post preview-->
         <div class="post-preview">
             <a href="posts/post.html">
-                <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-                <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+                <h2 class="post-title"><?php //echo  $row->title; 
+                                        ?></h2>
+                <h3 class="post-subtitle"><?php //echo  $row->subtitle; 
+                                            ?></h3>
             </a>
             <p class="post-meta">
                 Posted by
-                <a href="#!">Start Bootstrap</a>
-                on September 24, 2022
+                <a href="#!"><?php //echo  $row->user_name; 
+                                ?></a>
+                <?php //echo date('M', strtotime($row->created_at)) . ',' . date('d', strtotime($row->created_at)) . ',' . date('Y', strtotime($row->created_at)); 
+                ?>
             </p>
         </div>
         <!-- Divider-->
         <hr class="my-4" />
-        <!-- Post preview-->
-        <div class="post-preview">
-            <a href="post.html">
-                <h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend
-                    to waste any of mine.</h2>
-            </a>
-            <p class="post-meta">
-                Posted by
-                <a href="#!">Start Bootstrap</a>
-                on September 18, 2022
-            </p>
-        </div>
-        <!-- Divider-->
-        <hr class="my-4" />
-        <!-- Post preview-->
-        <div class="post-preview">
-            <a href="post.html">
-                <h2 class="post-title">Science has not yet mastered prophecy</h2>
-                <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the
-                    next ten.</h3>
-            </a>
-            <p class="post-meta">
-                Posted by
-                <a href="#!">Start Bootstrap</a>
-                on August 24, 2022
-            </p>
-        </div>
-        <!-- Divider-->
-        <hr class="my-4" />
-        <!-- Post preview-->
-        <div class="post-preview">
-            <a href="post.html">
-                <h2 class="post-title">Failure is not an option</h2>
-                <h3 class="post-subtitle">Many say exploration is part of our destiny, but it’s actually our
-                    duty to future generations.</h3>
-            </a>
-            <p class="post-meta">
-                Posted by
-                <a href="#!">Start Bootstrap</a>
-                on July 8, 2022
-            </p>
-        </div>
-        <!-- Divider-->
-        <hr class="my-4" />
+
         <!-- Pager-->
 
     </div>
