@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
         ]);
 
         if (move_uploaded_file($_FILES['img']['tmp_name'], $dir)) {
-            //echo "<center><h1 style='color:green;'>Image uploaded successfully</h1></center>";
+            echo "<center><h1 style='color:green;'>Image uploaded successfully</h1></center>";
             header('location: http://localhost/Clean-Blog/index.php');
         }
     }

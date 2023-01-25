@@ -18,7 +18,7 @@ $rows = $posts->fetchAll(PDO::FETCH_OBJ);
 
         <!-- Post preview-->
         <div class="post-preview">
-            <a href="http://localhost/clean-blog/posts/post.php?post_id = <?php echo $row->id; ?>">
+            <a href="http://localhost/clean-blog/posts/post.php?post_id=<?php echo $row->id; ?>">
                 <h2 class="post-title"><?php echo  $row->title; ?></h2>
                 <h3 class="post-subtitle"><?php echo  $row->subtitle; ?></h3>
             </a>
