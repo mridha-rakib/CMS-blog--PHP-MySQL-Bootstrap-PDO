@@ -49,6 +49,10 @@ if (isset($_GET['post_id'])) {
                     &middot; Images by
                     <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
                 </p> -->
+                <a href="http://localhost/clean-blog/posts/delete.php?del_id=<?php echo $post->id; ?>"
+                    class="btn btn-danger rounded-pill text-center float-end">Delete</a>
+                <a href="http://localhost/clean-blog/posts/delete.php?del_id=<?php echo $post->id; ?>"
+                    class="btn btn-success rounded-pill text-center float-start">Edit</a>
             </div>
         </div>
     </div>
