@@ -51,7 +51,7 @@ if (isset($_GET['post_id'])) {
                 </p> -->
                 <a href="http://localhost/clean-blog/posts/delete.php?del_id=<?php echo $post->id; ?>"
                     class="btn btn-danger rounded-pill text-center float-end">Delete</a>
-                <a href="http://localhost/clean-blog/posts/delete.php?del_id=<?php echo $post->id; ?>"
+                <a href="http://localhost/clean-blog/posts/update.php?upd_id=<?php echo $post->id; ?>"
                     class="btn btn-success rounded-pill text-center float-start">Edit</a>
             </div>
         </div>
