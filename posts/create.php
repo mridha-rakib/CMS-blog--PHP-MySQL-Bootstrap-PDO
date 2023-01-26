@@ -5,7 +5,7 @@
 <?php
 
 if (isset($_POST['submit'])) {
-    if ($_POST['title'] == '' or $_POST['subtitle'] == '' or $_POST['body'] == '') {
+    if ($_POST['title'] == '' or $_POST['subtitle'] == '' or $_POST['body'] == ''/* or $_FILES['img'] == ''*/) {
         echo "<center><h3 style='color:red;'>Please fill in all the fields correctly</h3></center>";
         // return;
     } else {
@@ -19,7 +19,11 @@ if (isset($_POST['submit'])) {
         $user_id = $_SESSION['user_id'];
         $user_name = $_SESSION['username'];
 
-        $dir = 'images' . basename($img);
+
+        // $dir = "images/" . basename($img);
+        $dir = "images/" . basename($img);
+        //move_uploaded_file($_FILES['img']['name'], $dir);
+
 
         $insert = $conn->prepare("INSERT INTO posts (title, subtitle, body, img, user_id, user_name) 
         VALUES(:title, :subtitle, :body, :img, :user_id, :user_name)");
@@ -38,8 +42,9 @@ if (isset($_POST['submit'])) {
             ':user_name' => $user_name,
         ]);
 
+
         if (move_uploaded_file($_FILES['img']['tmp_name'], $dir)) {
-            echo "<center><h1 style='color:green;'>Image uploaded successfully</h1></center>";
+            // echo "<center><h1 style='color:green;'>Image uploaded successfully</h1></center>";
             header('location: http://localhost/Clean-Blog/index.php');
         }
     }

@@ -43,7 +43,7 @@ session_start();
                     <?php if (isset($_SESSION['username'])) : ?>
 
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                            href="http://localhost/Clean-Blog/index.html">Home</a></li>
+                            href="http://localhost/Clean-Blog/index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                             href="http://localhost/Clean-Blog/posts/create.php">create</a>
                     </li>
