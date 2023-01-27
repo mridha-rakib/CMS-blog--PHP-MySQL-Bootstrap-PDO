@@ -20,18 +20,27 @@ if (isset($_POST['submit'])) {
         $title = $_POST['title'];
         $subtitle = $_POST['subtitle'];
         $body = $_POST['body'];
+        $img = $_FILES['img'];
+
+        $dir = "images/" . basename($img);
+
 
         $update = $conn->prepare("UPDATE posts SET title = :title, subtitle = :subtitle,
-        body = :body WHERE id = '$id'");
+        body = :body, img = :img WHERE id = '$id'");
 
         $update->execute([
             ':title' => $title,
             ':subtitle' => $subtitle,
-            ':body' => $body
+            ':body' => $body,
+            ':img' => $img
         ]);
 
-        //echo "<script>alert('<h1 style='color:green;'>Post updated successfully</h1>')</script>";
-        header('location: http://localhost/Clean-Blog/index.php');
+        if (move_uploaded_file($_FILES['img']['tmp_name'], $dir)) {
+            echo "<center><h1 style='color:green;'>Image uploaded successfully</h1></center>";
+            header('location: http://localhost/Clean-Blog/index.php');
+        }
+        // //echo "<script>alert('<h1 style='color:green;'>Post updated successfully</h1>')</script>";
+        // header('location: http://localhost/Clean-Blog/index.php');
     }
 }
 
@@ -58,6 +67,7 @@ if (isset($_POST['submit'])) {
         </textarea>
     </div>
 
+    <?php echo "<img src='images/" . $rows->img . "' width = 500px height = 500px> "; ?>
 
     <div class="form-outline mb-4">
         <input type="file" name="img" id="form2Example1" class="form-control" placeholder="image" />
