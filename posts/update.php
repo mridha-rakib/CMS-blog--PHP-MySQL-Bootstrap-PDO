@@ -20,6 +20,7 @@ if (isset($_POST['submit'])) {
         echo "<center><h3 style='color:red;'>Please fill in all the fields correctly</h3></center>";
     } else {
 
+        unlink("images/" . $rows->img . "");
 
         $title = $_POST['title'];
         $subtitle = $_POST['subtitle'];
