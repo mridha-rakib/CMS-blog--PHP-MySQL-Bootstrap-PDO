@@ -43,11 +43,15 @@ $categories = $categories->fetchAll(PDO::FETCH_OBJ);
 
 
 <div class="row gx-4 gx-lg-5 justify-content-center">
+    <h3 class="">Categories</h3>
+    <br><br><br>
     <?php foreach ($categories as $cat) : ?>
-    <div class="col-md-5 justify-content">
-        <div class="alert alert-dark bg-dark text-center text-white" role="alert">
-            <?php echo $cat->name; ?>
-        </div>
+    <div class="col-md-5">
+        <a href="http://localhost/clean-blog/categories/category.php?cat_id=<?php echo $cat->id; ?>">
+            <div class="alert alert-dark bg-dark text-center text-white" role="alert">
+                <?php echo $cat->name; ?>
+            </div>
+        </a>
     </div>
     <?php endforeach; ?>
 </div>
