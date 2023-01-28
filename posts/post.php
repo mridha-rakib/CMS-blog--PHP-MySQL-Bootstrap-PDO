@@ -49,10 +49,14 @@ if (isset($_GET['post_id'])) {
                     &middot; Images by
                     <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
                 </p> -->
+
+                <?php if (isset($_SESSION['user_id']) and $_SESSION['user_id'] == $post->user_id) : ?>
+
                 <a href="http://localhost/clean-blog/posts/delete.php?del_id=<?php echo $post->id; ?>"
                     class="btn btn-danger rounded-pill text-center float-end">Delete</a>
                 <a href="http://localhost/clean-blog/posts/update.php?upd_id=<?php echo $post->id; ?>"
                     class="btn btn-success rounded-pill text-center float-start">Edit</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
