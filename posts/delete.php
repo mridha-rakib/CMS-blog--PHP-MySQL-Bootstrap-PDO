@@ -1,3 +1,4 @@
+<?php require '../includes/navbar.php'; ?>
 <?php require '../config/config.php'; ?>
 
 <?php
@@ -10,16 +11,18 @@ if (isset($_GET['del_id'])) {
     $select->execute();
     $posts = $select->fetch(PDO::FETCH_OBJ);
 
-    unlink("images/" . $posts->img . "");
+    if ($_SESSION['user_id'] !== $posts->user_id) {
+        header("location: http://localhost/clean-blog/index.php");
+    } else {
+
+        unlink("images/" . $posts->img . "");
 
 
-    $delete = $conn->prepare("DELETE FROM posts WHERE id = :id");
-
-    $delete->execute([
-        ':id' => $id
-    ]);
-
-    header("location: http://localhost/clean-blog/index.php");
+        $delete = $conn->prepare("DELETE FROM posts WHERE id = :id");
+        $delete->execute([
+            ':id' => $id
+        ]);
+    }
 }
 
 ?>
