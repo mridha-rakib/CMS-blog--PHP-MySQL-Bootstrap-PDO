@@ -7,9 +7,13 @@ if (isset($_GET['upd_id'])) {
     $id = $_GET['upd_id'];
 }
 
+
 $select = $conn->query("SELECT * FROM posts WHERE id = '$id'");
 $select->execute();
 $rows = $select->fetch(PDO::FETCH_OBJ);
+
+// echo $rows->img;
+
 
 if (isset($_POST['submit'])) {
     if ($_POST['title'] == '' or $_POST['subtitle'] == '' or $_POST['body'] == ''/* or $_FILES['img'] == ''*/) {
@@ -20,7 +24,11 @@ if (isset($_POST['submit'])) {
         $title = $_POST['title'];
         $subtitle = $_POST['subtitle'];
         $body = $_POST['body'];
-        $img = $_FILES['img'];
+        $img = $_FILES['img']['name'];
+
+        // echo $img;
+
+        // print_r($img);
 
         $dir = "images/" . basename($img);
 
@@ -36,11 +44,8 @@ if (isset($_POST['submit'])) {
         ]);
 
         if (move_uploaded_file($_FILES['img']['tmp_name'], $dir)) {
-            echo "<center><h1 style='color:green;'>Image uploaded successfully</h1></center>";
             header('location: http://localhost/Clean-Blog/index.php');
         }
-        // //echo "<script>alert('<h1 style='color:green;'>Post updated successfully</h1>')</script>";
-        // header('location: http://localhost/Clean-Blog/index.php');
     }
 }
 
@@ -49,7 +54,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-<form method="POST" action="update.php?upd_id=<?php echo $id; ?>">
+<form method="POST" enctype="multipart/form-data" action="update.php?upd_id=<?php echo $id; ?>">
     <!-- Email input -->
     <div class="form-outline mb-4">
         <input type="text" name="title" id="form2Example1" class="form-control" value="<?php echo $rows->title; ?> "
@@ -57,8 +62,8 @@ if (isset($_POST['submit'])) {
     </div>
 
     <div class="form-outline mb-4">
-        <input type="text" name="subtitle" id="form2Example1" class="form-control"
-            value="<?php echo $rows->title; ?> placeholder=" subtitle" />
+        <input type="text" name="subtitle" id="form2Example1" class="form-control" value="<?php echo $rows->title; ?>"
+            placeholder=" subtitle" />
     </div>
 
     <div class="form-outline mb-4">
@@ -67,7 +72,7 @@ if (isset($_POST['submit'])) {
         </textarea>
     </div>
 
-    <?php echo "<img src='images/" . $rows->img . "' width = 500px height = 500px> "; ?>
+    <?php echo "<img src='images/" . $rows->img . "' width = 800px height = 300px> "; ?>
 
     <div class="form-outline mb-4">
         <input type="file" name="img" id="form2Example1" class="form-control" placeholder="image" />
