@@ -11,7 +11,7 @@ if (isset($_GET['del_id'])) {
     $select->execute();
     $posts = $select->fetch(PDO::FETCH_OBJ);
 
-    if ($_SESSION['user_id'] !== $posts->user_id) {
+    if ($_SESSION['user_id'] != $posts->user_id) {
         header("location: http://localhost/clean-blog/index.php");
     } else {
 
@@ -22,6 +22,8 @@ if (isset($_GET['del_id'])) {
         $delete->execute([
             ':id' => $id
         ]);
+        echo "<script>window.alert('Delete successfully');</script>";
+        header("location: http://localhost/clean-blog/index.php");
     }
 }
 

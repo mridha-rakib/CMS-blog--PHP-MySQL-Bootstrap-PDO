@@ -14,7 +14,7 @@ $rows = $select->fetch(PDO::FETCH_OBJ);
 
 // echo $rows->img;
 
-if ($_SESSION['user_id'] !== $rows->user_id) {
+if ($_SESSION['user_id'] != $rows->user_id) {
     header('location: http://localhost/Clean-Blog/index.php');
 }
 
