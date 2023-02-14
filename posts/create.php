@@ -10,7 +10,7 @@ $categories->execute();
 $categories = $categories->fetchAll(PDO::FETCH_OBJ);
 
 if (isset($_POST['submit'])) {
-    if ($_POST['title'] == '' or $_POST['subtitle'] == '' or $_POST['body'] == ''/* or $_FILES['img'] == ''*/) {
+    if ($_POST['title'] == '' or $_POST['subtitle'] == '' or $_POST['body'] == '' or $_FILES['img'] == '' or $_POST['category_id'] == '') {
         echo "<center><h3 style='color:red;'>Please fill in all the fields correctly</h3></center>";
         // return;
     } else {
@@ -20,6 +20,7 @@ if (isset($_POST['submit'])) {
         $title = $_POST['title'];
         $subtitle = $_POST['subtitle'];
         $body = $_POST['body'];
+        $category_id = $_POST['category_id'];
         $img = $_FILES['img']['name'];
         $user_id = $_SESSION['user_id'];
         $user_name = $_SESSION['username'];
@@ -30,8 +31,8 @@ if (isset($_POST['submit'])) {
         //move_uploaded_file($_FILES['img']['name'], $dir);
 
 
-        $insert = $conn->prepare("INSERT INTO posts (title, subtitle, body, img, user_id, user_name) 
-        VALUES(:title, :subtitle, :body, :img, :user_id, :user_name)");
+        $insert = $conn->prepare("INSERT INTO posts (title, subtitle, body, category_id, img, user_id, user_name) 
+        VALUES(:title, :subtitle, :body, :category_id, :img, :user_id, :user_name)");
 
         // $insert->bindParam(':title', $title);
         // $insert->bindParam(':subtitle', $subtitle);
@@ -42,6 +43,7 @@ if (isset($_POST['submit'])) {
             ':title' => $title,
             ':subtitle' => $subtitle,
             ':body' => $body,
+            ':category_id' => $category_id,
             ':img' => $img,
             ':user_id' => $user_id,
             ':user_name' => $user_name,
@@ -77,8 +79,8 @@ if (isset($_POST['submit'])) {
     <div class="form-outline mb-4">
         <select name="category_id" class="form-select" aria-label="Default select example">
             <option selected>Open this select menu</option>
-            <?php foreach ($categories as $cat): ?>
-            <option value="<?php echo $cat->name;  ?>"><?php echo $cat->name;  ?></option>
+            <?php foreach ($categories as $cat) : ?>
+            <option value="<?php echo $cat->id;  ?>"><?php echo $cat->name;  ?></option>
             <?php endforeach; ?>
         </select>
     </div>
